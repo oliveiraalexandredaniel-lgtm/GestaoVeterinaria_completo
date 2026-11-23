@@ -1,0 +1,21 @@
+# Credenciais locais (NAO versionar)
+config.properties
+
+# Compilacao
+bin/
+out/
+*.class
+
+# Relatorios gerados
+relatorios/*.txt
+!relatorios/.gitkeep
+
+# IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+nbproject/
+.vscode/*
+!.vscode/settings.json

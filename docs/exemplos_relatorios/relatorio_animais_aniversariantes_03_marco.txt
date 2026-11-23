@@ -1,0 +1,16 @@
+======================================================================
+RELATÓRIO - ANIMAIS ANIVERSARIANTES DE MARÇO
+Gerado em: 22/11/2026 14:59
+======================================================================
+
+Animal: Thor
+Data de nascimento: 15/03/2020
+Cliente: Ana Souza
+Telefone do cliente: (12) 99111-1111
+----------------------------------------------------------------------
+Animal: Simba
+Data de nascimento: 30/03/2021
+Cliente: Carla Mendes
+Telefone do cliente: (12) 99333-3333
+----------------------------------------------------------------------
+Total de aniversariantes: 2

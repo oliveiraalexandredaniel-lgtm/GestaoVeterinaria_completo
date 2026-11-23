@@ -1,0 +1,66 @@
+digraph G {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=20, labelloc=t, label="Diagrama de Classes UML - Interface (principal, gui)", nodesep=0.45, ranksep=0.9, splines=true, pad=0.4, bgcolor=white];
+  node [shape=plain, fontname="Helvetica", fontsize=11];
+  edge [fontname="Helvetica", fontsize=10, color="#37474F"];
+  subgraph cluster_principal {
+    label="pacote principal"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,dashed"; color="#90A4AE"; 
+      Main [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>Main</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+main(String[]): void {static}<BR ALIGN="LEFT"/>+configurarAparencia(): void {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+  }
+  subgraph cluster_gui {
+    label="pacote gui"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,dashed"; color="#90A4AE"; 
+      JanelaPrincipal [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>JanelaPrincipal</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+DASHBOARD, CLIENTES, ANIMAIS, RACAS, RELATORIOS: String {static}<BR ALIGN="LEFT"/>-cartas: CardLayout<BR ALIGN="LEFT"/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+navegarPara(String): void<BR ALIGN="LEFT"/>-criarMenu(): JPanel<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      Atualizavel [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13">&lt;&lt;interface&gt;&gt;<BR/><B>Atualizavel</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+atualizar(): void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      PainelDashboard [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>PainelDashboard</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">-clienteDAO: ClienteDAO<BR ALIGN="LEFT"/>-animalDAO: AnimalDAO<BR ALIGN="LEFT"/>-racaDAO: RacaDAO<BR ALIGN="LEFT"/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+atualizar(): void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      PainelClientes [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>PainelClientes</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">-dao: ClienteDAO<BR ALIGN="LEFT"/>-selecionado: Cliente<BR ALIGN="LEFT"/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+atualizar(): void<BR ALIGN="LEFT"/>+novoCadastro(): void<BR ALIGN="LEFT"/>-pesquisar(): void<BR ALIGN="LEFT"/>-salvar(): void<BR ALIGN="LEFT"/>-desativar(): void<BR ALIGN="LEFT"/>-reativar(): void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      PainelAnimais [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>PainelAnimais</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">-animalDAO: AnimalDAO<BR ALIGN="LEFT"/>-clienteDAO: ClienteDAO<BR ALIGN="LEFT"/>-racaDAO: RacaDAO<BR ALIGN="LEFT"/>-selecionado: Animal<BR ALIGN="LEFT"/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+atualizar(): void<BR ALIGN="LEFT"/>+novoCadastro(): void<BR ALIGN="LEFT"/>-pesquisar(): void<BR ALIGN="LEFT"/>-consultarPorCliente(): void<BR ALIGN="LEFT"/>-salvar(): void<BR ALIGN="LEFT"/>-desativar(): void<BR ALIGN="LEFT"/>-reativar(): void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      PainelRacas [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>PainelRacas</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">-dao: RacaDAO<BR ALIGN="LEFT"/>-selecionada: Raca<BR ALIGN="LEFT"/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+atualizar(): void<BR ALIGN="LEFT"/>+novoCadastro(): void<BR ALIGN="LEFT"/>-pesquisar(): void<BR ALIGN="LEFT"/>-salvar(): void<BR ALIGN="LEFT"/>-desativar(): void<BR ALIGN="LEFT"/>-reativar(): void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      PainelRelatorios [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>PainelRelatorios</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">-clienteDAO: ClienteDAO<BR ALIGN="LEFT"/>-animalDAO: AnimalDAO<BR ALIGN="LEFT"/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">-gerarGeral(): void<BR ALIGN="LEFT"/>-gerarAnimais(): void<BR ALIGN="LEFT"/>-gerarClientes(): void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      BarraPesquisa [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>BarraPesquisa</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+getTexto(): String<BR ALIGN="LEFT"/>+isMostrarInativos(): boolean<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      BotoesCrud [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>BotoesCrud</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+atualizar(boolean, boolean): void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      ModeloTabela [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>ModeloTabela&lt;T&gt;</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+setItens(List&lt;T&gt;): void<BR ALIGN="LEFT"/>+getItem(int): T<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      Mensagens [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>Mensagens</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+sucesso(Component, String): void {static}<BR ALIGN="LEFT"/>+aviso(Component, String): void {static}<BR ALIGN="LEFT"/>+erro(Component, String): void {static}<BR ALIGN="LEFT"/>+confirmar(Component, String, String): boolean {static}<BR ALIGN="LEFT"/>+tratar(Component, DAOException): void {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      Formatos [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>Formatos</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+lerData(String): LocalDate {static}<BR ALIGN="LEFT"/>+data(LocalDate): String {static}<BR ALIGN="LEFT"/>+status(boolean): String {static}<BR ALIGN="LEFT"/>+sexo(Character): String {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+      Tema [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>Tema</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+botaoPrimario(String): JButton {static}<BR ALIGN="LEFT"/>+tabela(TableModel): JTable {static}<BR ALIGN="LEFT"/>+cartao(): JPanel {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+  }
+  subgraph cluster_externas {
+    label="pacote dao / util (usadas pela interface)"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,dashed"; color="#90A4AE"; 
+      ClienteDAO [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>ClienteDAO</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR></TABLE>>];
+      AnimalDAO [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>AnimalDAO</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR></TABLE>>];
+      RacaDAO [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>RacaDAO</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR></TABLE>>];
+      GeradorRelatorioTXT [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>GeradorRelatorioTXT</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR></TABLE>>];
+      CalculadoraIdade [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#F4F8FA"><TR><TD BGCOLOR="#D7E9EC" ALIGN="CENTER"><FONT POINT-SIZE="13"><B>CalculadoraIdade</B></FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR></TABLE>>];
+  }
+  Main -> JanelaPrincipal [arrowhead=vee, style=dashed, label="abre"];
+  JanelaPrincipal -> PainelDashboard [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelDashboard -> Atualizavel [arrowhead=empty, style=dashed, constraint=false];
+  JanelaPrincipal -> PainelClientes [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelClientes -> Atualizavel [arrowhead=empty, style=dashed, constraint=false];
+  JanelaPrincipal -> PainelAnimais [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelAnimais -> Atualizavel [arrowhead=empty, style=dashed, constraint=false];
+  JanelaPrincipal -> PainelRacas [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelRacas -> Atualizavel [arrowhead=empty, style=dashed, constraint=false];
+  JanelaPrincipal -> PainelRelatorios [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelRelatorios -> Atualizavel [arrowhead=empty, style=dashed, constraint=false];
+  PainelClientes -> BarraPesquisa [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelClientes -> BotoesCrud [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelClientes -> ModeloTabela [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelAnimais -> BarraPesquisa [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelAnimais -> BotoesCrud [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelAnimais -> ModeloTabela [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelRacas -> BarraPesquisa [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelRacas -> BotoesCrud [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelRacas -> ModeloTabela [arrowtail=diamond, dir=back, arrowhead=none];
+  PainelDashboard -> ClienteDAO [style=dashed, arrowhead=vee];
+  PainelDashboard -> AnimalDAO [style=dashed, arrowhead=vee];
+  PainelDashboard -> RacaDAO [style=dashed, arrowhead=vee];
+  PainelClientes -> ClienteDAO [style=dashed, arrowhead=vee];
+  PainelAnimais -> AnimalDAO [style=dashed, arrowhead=vee];
+  PainelAnimais -> ClienteDAO [style=dashed, arrowhead=vee];
+  PainelAnimais -> RacaDAO [style=dashed, arrowhead=vee];
+  PainelAnimais -> CalculadoraIdade [style=dashed, arrowhead=vee];
+  PainelRacas -> RacaDAO [style=dashed, arrowhead=vee];
+  PainelRelatorios -> ClienteDAO [style=dashed, arrowhead=vee];
+  PainelRelatorios -> AnimalDAO [style=dashed, arrowhead=vee];
+  PainelRelatorios -> GeradorRelatorioTXT [style=dashed, arrowhead=vee];
+  nota [shape=note, style=filled, fillcolor="#FFF8E1", color="#BCA45A", label="Nenhuma tela contém SQL: todas chamam os métodos dos DAOs.\nTodas as telas usam Tema, Mensagens e Formatos.", fontsize=10];
+}

@@ -1,0 +1,7 @@
+# Modelo de configuração da conexão com o MySQL.
+# Copie este arquivo para "config.properties" (na raiz do projeto)
+# e ajuste os valores. O config.properties NÃO deve ser versionado.
+
+db.url=jdbc:mysql://localhost:3306/gestao_veterinaria?useSSL=false&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true
+db.usuario=SEU_USUARIO
+db.senha=SUA_SENHA

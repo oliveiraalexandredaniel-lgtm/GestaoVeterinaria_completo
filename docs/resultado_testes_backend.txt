@@ -1,0 +1,195 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=45817 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+
+== ValidadorCPF
+  OK     CPF válido com máscara (123.456.789-09)
+  OK     CPF válido sem máscara (12345678909)
+  OK     CPF válido 529.982.247-25
+  OK     rejeita dígito verificador errado (123.456.789-00)
+  OK     rejeita sequência repetida (111.111.111-11)
+  OK     rejeita tamanho errado (123)
+  OK     rejeita texto vazio
+  OK     rejeita null
+  OK     rejeita letras (123.456.789-0a)
+  OK     formatar 12345678909 -> 123.456.789-09
+
+== CalculadoraIdade (referência fixa: 19/11/2026)
+  OK     15/03/2020 -> 6 anos e 8 meses
+  OK     19/11/2025 -> 1 ano
+  OK     19/10/2026 -> 1 mês
+  OK     19/06/2026 -> 5 meses
+  OK     mesma data -> Menos de 1 mês
+  OK     data nula -> Não informada
+  OK     data futura -> Data inválida
+  OK     calcular(null) devolve null
+
+== Cliente: cadastro, validações, alteração, exclusão lógica
+  OK     inserir gera ID > 0
+  OK     status inicial é ativo
+  OK     data_ultima_alteracao inicia nula
+  OK     nome gravado sem espaços nas pontas
+  OK     CPF sem máscara é gravado formatado
+  OK     UF gravada em maiúsculas
+  OK     data de nascimento gravada corretamente
+  OK     buscarPorCpf encontra com máscara
+  OK     buscarPorCpf encontra sem máscara
+  OK     nome obrigatório  -> "O nome do cliente é obrigatório."
+  OK     CPF obrigatório  -> "O CPF do cliente é obrigatório."
+  OK     CPF inválido (dígito errado)  -> "CPF inválido: 123.456.789-00"
+  OK     CPF inválido (sequência repetida)  -> "CPF inválido: 111.111.111-11"
+  OK     CPF duplicado (mesmo formato)  -> "Já existe um cliente cadastrado com este CPF: Cliente Teste 237686."
+  OK     CPF duplicado (sem máscara)  -> "Já existe um cliente cadastrado com este CPF: Cliente Teste 237686."
+  OK     UF inválida  -> "O estado deve ser a sigla da UF com 2 letras (ex.: SP)."
+  OK     data de nascimento futura  -> "A data de nascimento não pode ser futura."
+  OK     nome com mais de 100 caracteres  -> "O nome pode ter no máximo 100 caracteres."
+  OK     alterar mantém o mesmo ID
+  OK     alterar grava o novo nome
+  OK     alterar grava o novo telefone
+  OK     alterar preenche data_ultima_alteracao
+  OK     alterar para CPF de outro cliente  -> "Já existe um cliente cadastrado com este CPF: Outro Cliente 237686."
+  OK     alterar com CPF inválido  -> "CPF inválido: 123.456.789-99"
+  OK     alterar sem nome  -> "O nome do cliente é obrigatório."
+  OK     alterar mantendo o próprio CPF é permitido
+  OK     alterar cliente inexistente  -> "Cliente não encontrado (ID 99999999)."
+  OK     pesquisar por parte do nome
+  OK     pesquisar por nome ignora maiúsculas
+  OK     pesquisar por CPF formatado
+  OK     pesquisar por CPF só com dígitos
+  OK     pesquisar por texto inexistente devolve lista vazia
+  OK     pesquisa com aspas/SQL injection não quebra nem devolve tudo
+  OK     curinga % é tratado como texto literal
+  OK     listar(true) contém o cliente
+  OK     desativado não aparece em listar(true)
+  OK     desativado não aparece na pesquisa padrão
+  OK     desativado aparece em listar(false)
+  OK     registro continua no banco com status FALSE
+  OK     desativar de novo  -> "O cliente já está inativo."
+  OK     alterar cliente inativo  -> "Cliente inativo não pode ser alterado. Reative-o primeiro."
+  OK     cadastrar CPF de cliente inativo orienta a reativar  -> "Já existe um cliente cadastrado com este CPF: Cliente Alterado 237686. Esse cadastro está inativo; reative-o em vez de cadastrar novamente."
+  OK     reativar volta a listar(true)
+  OK     reativar cliente já ativo  -> "O cliente já está ativo."
+  OK     desativar cliente inexistente  -> "Cliente não encontrado (ID 99999999)."
+
+== Raça: cadastro, duplicidade, alteração, exclusão lógica
+  OK     inserir gera ID > 0
+  OK     tipo normalizado para 'Cachorro'
+  OK     status inicial ativo
+  OK     raça duplicada para o mesmo tipo  -> "Já existe a raça 'Poodle Teste 237686' para o tipo Cachorro."
+  OK     duplicada ignorando maiúsculas  -> "Já existe a raça 'POODLE TESTE 237686' para o tipo Cachorro."
+  OK     raça seed duplicada (Poodle/Cachorro)  -> "Já existe a raça 'Poodle' para o tipo Cachorro."
+  OK     mesmo nome para outro tipo é permitido (Poodle/Gato)
+  OK     tipo inválido  -> "Tipo de animal inválido: 'Pássaro'. Use Cachorro ou Gato."
+  OK     tipo obrigatório  -> "O tipo de animal é obrigatório (Cachorro ou Gato)."
+  OK     nome obrigatório  -> "O nome da raça é obrigatório."
+  OK     alterar mantém o ID e grava o nome
+  OK     alterar criando duplicidade  -> "Já existe a raça 'Poodle Teste 237686' para o tipo Gato."
+  OK     alterar mantendo o próprio nome é permitido
+  OK     pesquisar por nome
+  OK     pesquisar por tipo
+  OK     listar(true) contém a raça
+  OK     desativada não aparece em listar(true)
+  OK     desativada aparece em listar(false)
+  OK     cadastrar raça igual a uma inativa orienta a reativar  -> "Já existe a raça 'Poodle Alterado 237686' para o tipo Cachorro. Ela está inativa; reative-a em vez de cadastrar novamente."
+  OK     alterar raça inativa  -> "Raça inativa não pode ser alterada. Reative-a primeiro."
+  OK     reativar volta a listar(true)
+  OK     desativar raça inexistente  -> "Raça não encontrada (ID 99999999)."
+
+== Animal: cadastro, vínculos, consulta por cliente, alteração, exclusão lógica
+  OK     inserir gera ID > 0
+  OK     sexo 'm' gravado como 'M'
+  OK     status inicial ativo
+  OK     JOIN traz nome do cliente
+  OK     JOIN traz raça e tipo
+  OK     JOIN traz telefone do cliente
+  OK     animal sem data de nascimento e sem sexo é aceito
+  OK     idade de animal sem data = 'Não informada'
+  OK     nome obrigatório  -> "O nome do animal é obrigatório."
+  OK     sexo inválido  -> "Sexo inválido. Use M (macho) ou F (fêmea)."
+  OK     sem cliente (ID 0)  -> "O animal deve estar vinculado a um cliente."
+  OK     sem raça (ID 0)  -> "O animal deve possuir uma raça cadastrada."
+  OK     cliente inexistente  -> "O cliente informado não existe (ID 99999999)."
+  OK     raça inexistente  -> "A raça informada não existe (ID 99999999)."
+  OK     data de nascimento futura  -> "A data de nascimento não pode ser futura."
+  OK     cliente inativo não pode ter animal novo  -> "O cliente 'Cliente Inativo 237686' está inativo."
+  OK     raça inativa não pode ser usada  -> "A raça 'Raca Inativa 237686' está inativa."
+  OK     consulta por nome do cliente encontra os 2 animais
+  OK     consulta por parte do nome do cliente
+  OK     consulta por CPF com máscara
+  OK     consulta por CPF só dígitos
+  OK     consulta por nome + CPF combinados
+  OK     nome e CPF de pessoas diferentes não retornam nada
+  OK     consulta por cliente inexistente devolve lista vazia
+  OK     idade calculada de Rex (nascido em 15/01/2022) tem anos
+  OK     alterar mantém o ID
+  OK     alterar grava nome, cor e raça
+  OK     observações com acentos são gravadas corretamente (UTF-8)
+  OK     alterar para raça inativa  -> "A raça 'Raca Inativa 237686' está inativa."
+  OK     alterar para cliente inativo  -> "O cliente 'Cliente Inativo 237686' está inativo."
+  OK     alterar animal inexistente  -> "Animal não encontrado (ID 99999999)."
+  OK     pesquisar por nome do animal
+  OK     pesquisar por nome do cliente
+  OK     pesquisar por raça
+  OK     listarPorIdCliente traz os 2 animais ativos
+  OK     desativar cliente com animais ativos  -> "Não é possível desativar o cliente: ele possui 2 animal(is) ativo(s). Desative os animais primeiro."
+  OK     desativar raça com animais ativos  -> "Não é possível desativar a raça: há 2 animal(is) ativo(s) vinculado(s) a ela."
+  OK     mudar tipo de raça que tem animais  -> "Não é possível mudar o tipo de uma raça que já possui animais vinculados."
+  OK     animal desativado não aparece em listar(true)
+  OK     animal desativado não aparece na pesquisa padrão
+  OK     animal desativado não aparece na consulta por cliente (padrão)
+  OK     consulta por cliente com incluirInativos mostra o desativado
+  OK     animal desativado aparece em listar(false)
+  OK     desativar animal já inativo  -> "O animal já está inativo."
+  OK     alterar animal inativo  -> "Animal inativo não pode ser alterado. Reative-o primeiro."
+  OK     reativar animal volta a listar(true)
+  OK     reativar animal de cliente inativo  -> "O cliente 'Dono Dois 237686' está inativo."
+  OK     desativar animal inexistente  -> "Animal não encontrado (ID 99999999)."
+
+== Aniversariantes por mês
+  OK     cliente nascido em dezembro aparece no mês 12
+  OK     animal nascido em dezembro aparece no mês 12
+  OK     mês 12 só traz clientes nascidos em dezembro
+  OK     mês 12 só traz animais nascidos em dezembro
+  OK     lista de animais do mês traz telefone do cliente
+  OK     animal aparece em dezembro só uma vez
+  OK     dados iniciais: Ana Souza (12/03) aparece em março
+  OK     dados iniciais: Diego Ferreira (30/03) aparece em março
+  OK     dados iniciais: Thor (15/03) e Simba (30/03) aparecem em março
+  OK     março ordenado por dia (Ana 12 antes de Diego 30)
+  OK     animal sem data de nascimento (Max) não aparece em nenhum mês
+  OK     mês 0 inválido (clientes)  -> "Mês inválido. Informe um valor de 1 a 12."
+  OK     mês 13 inválido (clientes)  -> "Mês inválido. Informe um valor de 1 a 12."
+  OK     mês 0 inválido (animais)  -> "Mês inválido. Informe um valor de 1 a 12."
+  OK     mês 13 inválido (animais)  -> "Mês inválido. Informe um valor de 1 a 12."
+  OK     animal desativado some dos aniversariantes
+  OK     cliente desativado some dos aniversariantes
+
+== Relatórios TXT (UTF-8)
+  OK     arquivo do relatório geral foi criado
+  OK     caminho devolvido é absoluto
+  OK     geral: tem título
+  OK     geral: tem cliente, CPF, animal, raça e nascimento
+  OK     geral: acentos preservados em UTF-8 (Siamês)
+  OK     geral: animal sem data mostra 'Não informada'
+  OK     geral: cliente sem animais é listado com aviso
+  OK     geral: rodapé com totais
+  OK     geral: não lista cliente inativo
+  OK     arquivo não começa com BOM
+  OK     animais: nome do arquivo inclui mês (03_marco)
+  OK     animais: título com o mês (MARÇO)
+  OK     animais: traz animal, cliente, telefone e data
+  OK     clientes: traz nome, CPF, data e telefone
+  OK     mês sem aniversariantes gera arquivo com aviso
+  OK     cria a pasta de destino se não existir
+  OK     nomeMes(13) lança IllegalArgumentException
+  OK     nomeMes(1) = Janeiro e nomeMes(12) = Dezembro
+  (arquivos de teste gravados em /tmp/relatorios_teste220694296836945229)
+
+== Exclusão lógica (sem DELETE) e contadores do dashboard
+  OK     contarAtivos de clientes = tamanho de listar(true)
+  OK     contarAtivas de raças = tamanho de listar(true)
+  OK     contarAtivos de animais = tamanho de listar(true)
+  OK     clientes no banco = ativos + inativos (nenhum apagado fisicamente)
+  OK     raças no banco = ativas + inativas
+  OK     animais no banco = ativos + inativos
+  OK     nenhum arquivo do código-fonte usa o comando de remoção física
+
+RESUMO: 175 verificações OK, 0 falharam.

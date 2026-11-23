@@ -1,0 +1,30 @@
+======================================================================
+RELATÓRIO - TODOS OS CLIENTES E SEUS ANIMAIS
+Gerado em: 22/11/2026 14:59
+======================================================================
+
+Cliente: Ana Souza
+CPF: 123.456.789-09
+   - Animal: Mel | Raça: Poodle (Cachorro) | Nascimento: 20/07/2022
+   - Animal: Pipoca | Raça: Border Collie (Cachorro) | Nascimento: 10/05/2024
+   - Animal: Thor | Raça: Labrador (Cachorro) | Nascimento: 15/03/2020
+----------------------------------------------------------------------
+Cliente: Bruno Lima
+CPF: 111.444.777-35
+   - Animal: Luna | Raça: Siamês (Gato) | Nascimento: 02/11/2019
+----------------------------------------------------------------------
+Cliente: Carla Mendes
+CPF: 529.982.247-25
+   - Animal: Simba | Raça: Sem Raça Definida (Gato) | Nascimento: 30/03/2021
+----------------------------------------------------------------------
+Cliente: Diego Ferreira
+CPF: 390.533.447-05
+   - Animal: Bela | Raça: Shih Tzu (Cachorro) | Nascimento: 10/01/2023
+   - Animal: Max | Raça: Vira-lata (Cachorro) | Nascimento: Não informada
+----------------------------------------------------------------------
+Cliente: Marina Costa
+CPF: 168.995.350-09
+   (sem animais cadastrados)
+----------------------------------------------------------------------
+Total de clientes: 5
+Total de animais: 7
