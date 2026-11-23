@@ -37,7 +37,7 @@ relatorios/  saída dos relatórios TXT
 - Relatórios TXT em UTF-8: geral (clientes e animais), animais aniversariantes e clientes aniversariantes do mês.
 - PreparedStatement em todo o acesso ao banco.
 
-[se_o_de_instala_o_e_execu_o_readme.md](https://github.com/user-attachments/files/35275035/se_o_de_instala_o_e_execu_o_readme.md)## 🚀 Como Configurar e Executar o Projeto
+🚀 Como Configurar e Executar o Projeto
 
 Siga o passo a passo abaixo para preparar o ambiente, configurar o banco de dados e iniciar o sistema **VetGestão** em uma nova máquina.
 
